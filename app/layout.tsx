@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ApolloProvider } from "@apollo/client";
+import { ReduxProvider } from "@/src/redux/provider";
 import { client } from "@/utils/apolloClient";
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ApolloProvider client={client}>{children}</ApolloProvider>
+        <ApolloProvider client={client}>
+          <ReduxProvider>{children}</ReduxProvider>
+        </ApolloProvider>
       </body>
     </html>
   );
