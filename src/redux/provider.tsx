@@ -1,5 +1,4 @@
 "use client";
-// import Spinner from "@/app/components/share/spinner";
 import Spinner from "../components/share/spinner";
 import { store, persistor } from "./store";
 import { Provider } from "react-redux";

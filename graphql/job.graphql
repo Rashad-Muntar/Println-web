@@ -1,0 +1,33 @@
+mutation createJob($input: NewJob!) {
+  createJob(input: $input) {
+    Id
+    onGoing
+    completed
+    description
+    file
+  }
+}
+
+mutation processFile($url: String!){
+  processFile(url: $url){
+    url
+    price
+  }
+}
+
+subscription currentTime {
+  currentTime {
+    unixTime
+    timeStamp
+  }
+}
+
+subscription JobCreated {
+    jobCreated {
+        Id
+        description
+        onGoing
+        completed
+        file
+    }
+}
