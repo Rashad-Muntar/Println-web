@@ -6,12 +6,12 @@ import { ApolloClient, InMemoryCache } from "@apollo/client";
 
 const wsLink = new GraphQLWsLink(
   createClient({
-    url: "ws://localhost:8080/query",
+    url: process.env.NEXT_PUBLIC_API_WS_ENDPOINT
   })
 );
 
 const httpLink = new HttpLink({
-  uri: "http://localhost:8080/query",
+  uri: process.env.NEXT_PUBLIC_API_ENDPOINT
 });
 
 const splitLink = split(
