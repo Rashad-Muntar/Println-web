@@ -1,0 +1,7 @@
+query me($id: Int!){
+  user(id: $id){
+    Id
+    username
+    email
+  }
+}
