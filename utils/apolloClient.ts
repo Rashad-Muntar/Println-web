@@ -1,3 +1,4 @@
+"use client"
 import { split, HttpLink } from "@apollo/client";
 import { getMainDefinition } from "@apollo/client/utilities";
 import { GraphQLWsLink } from "@apollo/client/link/subscriptions";
@@ -6,7 +7,7 @@ import { ApolloClient, InMemoryCache } from "@apollo/client";
 
 const wsLink = new GraphQLWsLink(
   createClient({
-    url: process.env.NEXT_PUBLIC_API_WS_ENDPOINT
+    url: "ws://localhost:8080/query",
   })
 );
 
