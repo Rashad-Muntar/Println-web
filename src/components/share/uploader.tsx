@@ -1,30 +1,13 @@
 // import { useTus } from 'use-tus'
+
 import { useCallback, ChangeEvent } from "react";
 
-const Uploader = () => {
-  // const { upload, setUpload, isSuccess, error, remove } = useTus();
-  // const handleSetUpload = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-  //     const file = event.target.files.item(0);
-  //     if (!file) {
-  //       return;
-  //     }
-  //     setUpload(file, {
-  //       endpoint: 'https://tusd.tusdemo.net/files/',
-  //       metadata: {
-  //         filename: file.name,
-  //         filetype: file.type,
-  //       },
-  //     });
-  //   },
-  //   [setUpload]
-  // );
-  // const handleStart = useCallback(() => {
-  //   if (!upload) {
-  //     return;
-  //   }
-  //   // Start to upload the file.
-  //   upload.start();
-  // }, [upload]);
+interface Props {
+    name: string,
+    onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+}
+const Uploader = ({name, onChange}:Props) => {
+
   return (
     <div className="flex items-center justify-center w-full">
       <label
@@ -53,7 +36,7 @@ const Uploader = () => {
           </p>
           <p className="text-xs text-gray-500 dark:text-gray-400">Word, PDF</p>
         </div>
-        <input id="dropzone-file" type="file" className="hidden" />
+        <input id="dropzone-file" type="file" name={name} onChange={onChange} className="hidden" />
       </label>
     </div>
   );
