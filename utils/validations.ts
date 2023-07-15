@@ -20,11 +20,19 @@ const LoginSchema = Yup.object().shape({
     .required("Required"),
 });
 const updateProfileSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email").required("Required"),
+  id: Yup.number().required("Required"),
   username: Yup.string()
     .min(2, "Too Short!")
     .max(20, "Too Long!")
     .required("Required"),
 });
 
-export { SignupSchema, LoginSchema, updateProfileSchema };
+const createJobSchema = Yup.object().shape({
+  description: Yup.string()
+    .min(10, "Too Short!")
+    .max(350, "Too Long!")
+    .required("Required"),
+  file: Yup.string().required("Required"),
+});
+
+export { SignupSchema, LoginSchema, updateProfileSchema, createJobSchema };
