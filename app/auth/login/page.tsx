@@ -1,6 +1,3 @@
-// import Login from "@/app/components/auth/login";
-
-import { useRouter } from 'next/navigation'
 import Login from '@/src/components/auth/login';
 
 const Page = async () => {

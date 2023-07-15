@@ -4,25 +4,25 @@ import Spinner from "../share/spinner";
 import { useState } from "react";
 import { Formik } from "formik";
 import Cookies from "js-cookie";
-// import { LoginSchema } from "@/app/utils/authValidation";
 import { LoginSchema } from "@/utils/validations";
-// import { loginService } from "@/app/api/auth";
-// import { currentUser } from "@/redux/features/userReducer";
 import { currentUser } from "@/src/redux/features/userReducer";
 import { useDispatch } from "react-redux";
 import { useLoginMutation } from "@/generated/graphql";
-// import AuthContainer from "./container";
 import AuthContainer from "../share/AuthContainer";
 import Input from "../share/Input";
 import Button from "../share/Button";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useSelector } from "react-redux";
 
 const Login = () => {
   const [login] = useLoginMutation();
   const router = useRouter();
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
+
+  const user = useSelector((state:any) => state.user.currentUser)
+  console.log(user)
   return (
     <AuthContainer
       heading="LOG IN"
@@ -51,11 +51,11 @@ const Login = () => {
             Cookies.set("accessToken", response?.data?.login?.token, {
               expires: new Date(accessTokenExpireDate),
             });
-            // Cookies.set("refreshToken", response?.data?.user.refreshToken);
+            // Cookies.set("refreshToken", response?.data?.login?.user.token);
             // Cookies.set("email", response?.data?.user.email);
             dispatch(currentUser(response?.data?.login?.user));
             setIsLoading(false);
-            // router.push("/");
+            router.push("/");
             console.log(response);
             return response;
           } catch (error: any) {

@@ -4,7 +4,6 @@ import userReducer from "./features/userReducer";
 import storage from "./storage";
 import { combineReducers } from "@reduxjs/toolkit";
 import { persistReducer, persistStore } from 'redux-persist';
-import AsyncStorage from '@react-native-community/async-storage';
 import thunk from 'redux-thunk';
 
 const persistConfig = {
