@@ -14,6 +14,8 @@ const Signup = () => {
   const [signup] = useSignupMutation();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
+
+ 
   return (
     <AuthContainer
       heading="SIGN UP"
@@ -35,7 +37,7 @@ const Signup = () => {
               },
             });
             setIsLoading(false);
-            // router.push("/auth/login");
+            router.push("/auth/login");
             console.log(response);
           } catch (error: any) {
             return error.message;

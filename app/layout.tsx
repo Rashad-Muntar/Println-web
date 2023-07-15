@@ -18,9 +18,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ApolloClientProvider >
-          <ReduxProvider>{children}</ReduxProvider>
-        </ApolloClientProvider>
+        <div className="h-full">
+            <ApolloClientProvider >
+              <ReduxProvider>{children}</ReduxProvider>
+            </ApolloClientProvider>
+        </div>
       </body>
     </html>
   );
