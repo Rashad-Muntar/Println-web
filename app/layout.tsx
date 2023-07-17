@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ApolloClientProvider } from "@/utils/apolloClientProvider";
+import Navbar from "@/src/components/navigation/navbar";
 import { ReduxProvider } from "@/src/redux/provider";
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <Navbar />
         <div className="h-full">
             <ApolloClientProvider >
               <ReduxProvider>{children}</ReduxProvider>

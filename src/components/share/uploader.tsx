@@ -1,13 +1,10 @@
-// import { useTus } from 'use-tus'
-
-import { useCallback, ChangeEvent } from "react";
+import { ChangeEvent } from "react";
 
 interface Props {
-    name: string,
-    onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  name: string;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
-const Uploader = ({name, onChange}:Props) => {
-
+const Uploader = ({ name, onChange }: Props) => {
   return (
     <div className="flex items-center justify-center w-full">
       <label
@@ -36,7 +33,13 @@ const Uploader = ({name, onChange}:Props) => {
           </p>
           <p className="text-xs text-gray-500 dark:text-gray-400">Word, PDF</p>
         </div>
-        <input id="dropzone-file" type="file" name={name} onChange={onChange} className="hidden" />
+        <input
+          id="dropzone-file"
+          type="file"
+          name={name}
+          onChange={onChange}
+          className="hidden"
+        />
       </label>
     </div>
   );

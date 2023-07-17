@@ -51,8 +51,8 @@ const Login = () => {
             Cookies.set("accessToken", response?.data?.login?.token, {
               expires: new Date(accessTokenExpireDate),
             });
-            // Cookies.set("refreshToken", response?.data?.login?.user.token);
-            // Cookies.set("email", response?.data?.user.email);
+            // Cookies.set("refreshToken", response?.data?.login?.user?.token);
+            Cookies.set("email", response?.data?.login?.user.email);
             dispatch(currentUser(response?.data?.login?.user));
             setIsLoading(false);
             router.push("/");
