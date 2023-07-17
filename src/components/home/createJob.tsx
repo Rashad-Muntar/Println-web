@@ -6,12 +6,13 @@ import Spinner from "../share/spinner";
 import Input from "../share/Input";
 import Uploader from "../share/uploader";
 import AuthContainer from "../share/AuthContainer";
-import { useCreateJobMutation } from "@/generated/graphql";
+import { useCreateJobMutation, useProcessFileMutation } from "@/generated/graphql";
 import { createJobSchema } from "@/utils/validations";
 
 const CreateJob = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [createJob] = useCreateJobMutation();
+  const [processFile] = useProcessFileMutation();
   return (
     <AuthContainer
       heading="Upload your file"
@@ -23,25 +24,26 @@ const CreateJob = () => {
         onSubmit={async (values) => {
           setIsLoading(true);
           console.log(values)
-          setIsLoading(false);
-        //   try {
-        //     const response = await createJob({
-        //       variables: {
-        //         input: {
-        //           userId: 1,
-        //           onGoing: false,
-        //           completed: false,
-        //           description: values.description,
-        //           file: values.file,
-        //         },
-        //       },
-        //     });
+      
+          try {
+            const response = await createJob({
+              variables: {
+                input: {
+                  userId: 1,
+                  onGoing: false,
+                  completed: false,
+                  description: values.description,
+                  file: values.file,
+                },
+              },
+            });
 
-        //     setIsLoading(false);
-        //     return response;
-        //   } catch (error: any) {
-        //     return error.message;
-        //   }
+            setIsLoading(false);
+            console.log(response)
+            return response;
+          } catch (error: any) {
+            return error.message;
+          }
         }}
       >
         {({
